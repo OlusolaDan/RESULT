@@ -9,7 +9,7 @@
 <body>
     <section id="container">
         <h1>Ol'bharms Height School</h1>
-        <p class="tob">Creche, Nursery, primary school<br> 27, Ifelodun street, off Otubu Bus/Stop, Agege<br> Telehone 08023998155, 08105345793</p>
+        <p class="tob">Creche, Nursery, primary school<br> 27, Ifelodun street, off Otubu Bus/Stop, Agege<br> Telehone 090023998155, 091050345793</p>
         <div class="row">
             <div class="left">
                     <h2>Student Bio</h2>
