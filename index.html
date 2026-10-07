@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Student Result Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-header">
+            <h2>Student Result Management System</h2>
+            <p>Fill out the fields below. Clicking the generate button will open the official result sheet in a new browser tab.</p>
+        </div>
+        
+        <form id="resultForm">
+            <h3>1. Student Demographics</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="studentName">Student Full Name</label>
+                    <input type="text" id="studentName" required placeholder="e.g. DAUDA MOHAMMED">
+                </div>
+                <div class="form-group">
+                    <label for="admissionNum">Admission Number</label>
+                    <input type="text" id="admissionNum" placeholder="e.g. ADM/2022/045">
+                </div>
+                <div class="form-group">
+                    <label for="className">Class</label>
+                    <input type="text" id="className" required placeholder="e.g. BASIC 5">
+                </div>
+                <div class="form-group">
+                    <label for="studentAge">Age</label>
+                    <input type="number" id="studentAge" placeholder="e.g. 9">
+                </div>
+                <div class="form-group">
+                    <label for="studentSex">Sex</label>
+                    <select id="studentSex">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="classPosition">Position / Rank in Class</label>
+                    <input type="text" id="classPosition" placeholder="e.g. 1st out of 5">
+                </div>
+                <div class="form-group">
+                    <label for="academicYear">Academic Year</label>
+                    <input type="text" id="academicYear" required placeholder="e.g. 2022/2023">
+                </div>
+                <div class="form-group">
+                    <label for="term">Term</label>
+                    <input type="text" id="term" required placeholder="e.g. FIRST TERM">
+                </div>
+            </div>
+
+            <h3>2. Attendance Records</h3>
+            <div class="form-grid summary-grid">
+                <div class="form-group">
+                    <label for="timesOpened">Number of Times School Opened</label>
+                    <input type="number" id="timesOpened" placeholder="e.g. 122">
+                </div>
+                <div class="form-group">
+                    <label for="timesPresent">Number of Times Present</label>
+                    <input type="number" id="timesPresent" placeholder="e.g. 122">
+                </div>
+            </div>
+
+            <h3>3. Academic Scores</h3>
+            <p class="instruction">Enter scores out of 40 for Test and 60 for Exam. Totals out of 100 auto-calculate.</p>
+            <div id="subjectRowsContainer">
+                <div class="subject-row">
+                    <input type="text" class="subject-name" placeholder="Subject Name (e.g. MATHEMATICS)" required>
+                    <input type="number" class="test-score" placeholder="Test (40)" min="0" max="40" required>
+                    <input type="number" class="exam-score" placeholder="Exam (60)" min="0" max="60" required>
+                    <button type="button" class="btn-remove" onclick="removeRow(this)">&times;</button>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" id="addSubjectBtn">+ Add Another Subject</button>
+            </div>
+
+            <h3>4. Behavioral & Skills Assessment</h3>
+            <div class="domain-input-grid">
+                <div class="domain-box-input">
+                    <h4>Psychomotor Domain (Skills)</h4>
+                    <div class="checkbox-group"><label><input type="checkbox" class="psychomotor-check" value="Handwriting" checked> Handwriting</label><input type="number" class="psychomotor-rating" min="1" max="5" value="4"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="psychomotor-check" value="Fluency" checked> Fluency</label><input type="number" class="psychomotor-rating" min="1" max="5" value="4"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="psychomotor-check" value="Games/Sports" checked> Games/Sports</label><input type="number" class="psychomotor-rating" min="1" max="5" value="3"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="psychomotor-check" value="Crafts" checked> Crafts</label><input type="number" class="psychomotor-rating" min="1" max="5" value="3"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="psychomotor-check" value="Music/Dance" checked> Music/Dance</label><input type="number" class="psychomotor-rating" min="1" max="5" value="4"></div>
+                </div>
+                <div class="domain-box-input">
+                    <h4>Affective Domain</h4>
+                    <div class="checkbox-group"><label><input type="checkbox" class="affective-check" value="Punctuality" checked> Punctuality</label><input type="number" class="affective-rating" min="1" max="5" value="5"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="affective-check" value="Attendance" checked> Attendance</label><input type="number" class="affective-rating" min="1" max="5" value="5"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="affective-check" value="Reliability" checked> Reliability</label><input type="number" class="affective-rating" min="1" max="5" value="4"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="affective-check" value="Neatness" checked> Neatness</label><input type="number" class="affective-rating" min="1" max="5" value="4"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="affective-check" value="Politeness" checked> Politeness</label><input type="number" class="affective-rating" min="1" max="5" value="4"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="affective-check" value="Honesty" checked> Honesty</label><input type="number" class="affective-rating" min="1" max="5" value="5"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="affective-check" value="Relationship with Others" checked> Relationship with Others</label><input type="number" class="affective-rating" min="1" max="5" value="4"></div>
+                    <div class="checkbox-group"><label><input type="checkbox" class="affective-check" value="Self-Control" checked> Self-Control</label><input type="number" class="affective-rating" min="1" max="5" value="4"></div>
+                </div>
+            </div>
+
+            <h3>5. Remarks & Recommendations</h3>
+            <div class="form-grid remark-form-grid">
+                <div class="form-group">
+                    <label for="teacherRemarksDropdown">Class Teacher Quick Select</label>
+                    <select id="teacherRemarksDropdown" onchange="autoFillRemark('teacherRemarksDropdown', 'teacherRemarksCustom')">
+                        <option value="">-- Select Template --</option>
+                        <option value="An excellent performance. Keep up the brilliant effort!">Excellent Performance</option>
+                        <option value="A very good result. With a bit more consistency, you can top the class.">Very Good / Promotional</option>
+                        <option value="An average performance. More focus is needed on core topics.">Average Performance</option>
+                    </select>
+                    <label for="teacherRemarksCustom" style="margin-top:10px;">Custom Teacher Remarks</label>
+                    <input type="text" id="teacherRemarksCustom" placeholder="Type custom evaluation remarks here...">
+                </div>
+
+                <div class="form-group">
+                    <label for="principalRemarksDropdown">Principal Quick Select</label>
+                    <select id="principalRemarksDropdown" onchange="autoFillRemark('principalRemarksDropdown', 'principalRemarksCustom')">
+                        <option value="">-- Select Template --</option>
+                        <option value="Wonderful result. Proven leadership and academic qualities.">Highly Commendable</option>
+                        <option value="Good performance. Promoted to next class level.">Passed & Promoted</option>
+                        <option value="Fair trial. Harder work is highly critical next term.">Needs Improvement</option>
+                    </select>
+                    <label for="principalRemarksCustom" style="margin-top:10px;">Custom Principal Remarks</label>
+                    <input type="text" id="principalRemarksCustom" placeholder="Type principal signing remarks here...">
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <button type="submit" class="btn-primary btn-block">Generate Official Result Sheet</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
